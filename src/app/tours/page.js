@@ -4,7 +4,8 @@ import { RecommendedTour } from '@/components/RecommendedTour'
 
 const fetchToursPage = async () => {
   let sbParams = {
-    version: 'draft',
+    // eslint-disable-next-line no-undef
+    version: process.env.NODE_ENV === 'development' ? 'draft' : 'published',
     resolve_relations: 'recommended_tours.tours',
   }
 
@@ -22,7 +23,8 @@ const fetchAllTours = async () => {
   const client = getStoryblokApi()
   const response = await client.getStories({
     content_type: 'tour',
-    version: 'draft',
+    // eslint-disable-next-line no-undef
+    version: process.env.NODE_ENV === 'development' ? 'draft' : 'published',
   })
   return response.data.stories
 }

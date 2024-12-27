@@ -3,7 +3,8 @@ import { getStoryblokApi, StoryblokStory } from '@storyblok/react/rsc'
 
 const fetchHomePage = async () => {
   let sbParams = {
-    version: 'draft',
+    // eslint-disable-next-line no-undef
+    version: process.env.NODE_ENV === 'development' ? 'draft' : 'published',
     resolve_relations: 'recommended_tours.tours',
   }
 

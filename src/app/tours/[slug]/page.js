@@ -1,11 +1,26 @@
+/* eslint-disable no-undef */
 /* eslint-disable react/prop-types */
 import React from 'react'
 import { getStoryblokApi, StoryblokStory } from '@storyblok/react/rsc'
 
+export const generateStaticParams = async () => {
+  const client = getStoryblokApi()
+  const response = await client.getStories({
+    content_type: 'tour',
+    // eslint-disable-next-line no-undef
+    version: process.env.NODE_ENV === 'development' ? 'draft' : 'published',
+  })
+
+  return response.data.stories.map((story) => ({ slug: story.slug }))
+}
+
 const fetchData = async (slug) => {
   // console.log(slug, "slug");
 
-  let sbParams = { version: 'draft' }
+  // eslint-disable-next-line no-undef
+  let sbParams = {
+    version: process.env.NODE_ENV === 'development' ? 'draft' : 'published',
+  }
 
   const storyblokApi = getStoryblokApi()
   try {
