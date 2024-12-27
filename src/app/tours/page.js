@@ -30,15 +30,18 @@ const fetchAllTours = async () => {
 const ToursPage = async () => {
   const story = await fetchToursPage()
   const tours = await fetchAllTours()
-  console.log(tours, 'tours@@@@')
+  // console.log(tours, 'tours@@@@')
+  // console.log(story, 'tours@@@@storyyyy')
 
   return (
     <div>
       <StoryblokStory story={story} />
-      {tours.map((tour) => {
-        console.log(tour.content._uid, 'tour@@@222')
-        return <RecommendedTour story={tour} key={tour.content._uid} />
-      })}
+      <div className="grid md:grid-cols-2 gap-8 container mx-auto px-4 w-full py-16">
+        {tours.map((tour) => {
+          console.log(tour.content._uid, 'tour@@@222')
+          return <RecommendedTour story={tour} key={tour.content._uid} />
+        })}
+      </div>
     </div>
   )
 }

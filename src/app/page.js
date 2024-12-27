@@ -9,8 +9,8 @@ const fetchHomePage = async () => {
 
   const storyblokApi = getStoryblokApi()
   try {
-    const response = await storyblokApi.get(`cdn/stories/home`, sbParams)
-    // console.log(response, "response");
+    const response = await storyblokApi.getStory(`home`, sbParams)
+    console.log(response.data.story, 'response')
 
     return response.data.story
   } catch (error) {
@@ -21,9 +21,9 @@ const fetchHomePage = async () => {
 
 const HomePage = async () => {
   const story = await fetchHomePage()
-  // console.log(story, "story");
+  // console.log(story, 'story')
 
   return <StoryblokStory story={story} />
-  // return <div>hello home page</div>;
+  // return <div>hello home page</div>
 }
 export default HomePage

@@ -1,20 +1,24 @@
 /* eslint-disable react/prop-types */
-import localFont from 'next/font/local'
+// import localFont from 'next/font/local'
 import './globals.css'
 import { storyblokInit, apiPlugin } from '@storyblok/react/rsc'
 import StoryblokProvider from '@/components/StoryblokProvider'
 import React from 'react'
+import Link from 'next/link'
+import { Inter } from 'next/font/google'
 
-const geistSans = localFont({
-  src: './fonts/GeistVF.woff',
-  variable: '--font-geist-sans',
-  weight: '100 900',
-})
-const geistMono = localFont({
-  src: './fonts/GeistMonoVF.woff',
-  variable: '--font-geist-mono',
-  weight: '100 900',
-})
+const inter = Inter({ subsets: ['latin'] })
+
+// const geistSans = localFont({
+//   src: './fonts/GeistVF.woff',
+//   variable: '--font-geist-sans',
+//   weight: '100 900',
+// })
+// const geistMono = localFont({
+//   src: './fonts/GeistMonoVF.woff',
+//   variable: '--font-geist-mono',
+//   weight: '100 900',
+// })
 
 const cachedFetch = (input, init) => {
   return fetch(input, {
@@ -41,10 +45,13 @@ export default function RootLayout({ children }) {
   return (
     <StoryblokProvider>
       <html lang="en">
-        <body
-          className={`${geistSans.variable} ${geistMono.variable} antialiased`}
-        >
-          <div> Layout</div>
+        <body className={`${inter.className} bg-blue-50`}>
+          <header>
+            <nav className="container mx-auto px-4 w-full py-8 flex justify-between">
+              <Link href="/">Home</Link>
+              <Link href="/tours">Tours</Link>
+            </nav>
+          </header>
           {children}
         </body>
       </html>
