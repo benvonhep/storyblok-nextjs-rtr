@@ -10,8 +10,11 @@ export const RecommendedTour = (props) => {
     <div className="bg-white rounded-sm shadow">
       <img
         className="aspect-video object-cover w-full"
-        src={story.content.main_image.filename}
+        src={`${story.content.main_image.filename}/m/612x508/filters:quality(70)`}
         alt={story.content.main_image.alt}
+        width={612}
+        height={508}
+        loading={'lazy'}
       />
       <div className="p-8">
         <div className="flex gap-4 justify-content text-lg font-bold">
