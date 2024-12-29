@@ -1,9 +1,11 @@
-import { StoryblokComponent } from '@storyblok/react/rsc'
+import { StoryblokComponent, storyblokEditable } from '@storyblok/react/rsc'
 import React from 'react'
 
 export const Grid = (params) => {
+  console.log(params, 'params')
+
   return (
-    <section className="bg-blue-100 py-16">
+    <section {...storyblokEditable(params.blok)} className="bg-blue-100 py-16">
       <div className="container mx-auto w-full px-4">
         <h2 className="text-3xl md:text-4xl font-bold">
           {params.blok.headline}

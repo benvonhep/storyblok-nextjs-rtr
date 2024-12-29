@@ -1,3 +1,4 @@
+import { storyblokEditable } from '@storyblok/react/rsc'
 import { RecommendedTour } from './RecommendedTour'
 import React from 'react'
 export const RecommendedTours = (params) => {
@@ -8,7 +9,10 @@ export const RecommendedTours = (params) => {
   // console.log(params, 'paramZZZZ')
 
   return (
-    <section className="py-16 container mx-auto w-full px-4">
+    <section
+      {...storyblokEditable(params.blok)}
+      className="py-16 container mx-auto w-full px-4"
+    >
       <h2 className="text-3xl md:text-4xl font-bold text-center">
         {params.blok.headline}
       </h2>
