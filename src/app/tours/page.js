@@ -5,7 +5,7 @@ import { storyblokInit, apiPlugin } from '@storyblok/react/rsc'
 
 storyblokInit({
   // eslint-disable-next-line no-undef
-  accessToken: process.env.STORYBLOK_API_TOKEN,
+  accessToken: process.env.NEXT_PUBLIC_STORYBLOK_API_TOKEN,
   use: [apiPlugin],
 })
 
