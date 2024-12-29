@@ -11,7 +11,6 @@ storyblokInit({
 
 const fetchHomePage = async () => {
   const { isEnabled } = draftMode()
-  console.log(isEnabled, 'isEnableduuuuuuuuuuuuuuu')
   let sbParams = {
     version:
       process.env.NODE_ENV === 'development' || isEnabled

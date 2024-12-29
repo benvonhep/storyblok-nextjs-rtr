@@ -3,6 +3,7 @@
 import React from 'react'
 import { getStoryblokApi, StoryblokStory } from '@storyblok/react/rsc'
 import { storyblokInit, apiPlugin } from '@storyblok/react/rsc'
+import { draftMode } from 'next/headers'
 
 storyblokInit({
   accessToken: process.env.NEXT_PUBLIC_STORYBLOK_API_TOKEN,
@@ -21,11 +22,16 @@ export const generateStaticParams = async () => {
 }
 
 const fetchData = async (slug) => {
+  const { isEnabled } = draftMode()
+
   // console.log(slug, "slug");
 
   // eslint-disable-next-line no-undef
   let sbParams = {
-    version: process.env.NODE_ENV === 'development' ? 'draft' : 'published',
+    version:
+      process.env.NODE_ENV === 'development' || isEnabled
+        ? 'draft'
+        : 'published',
   }
 
   const storyblokApi = getStoryblokApi()
