@@ -2,6 +2,12 @@
 /* eslint-disable react/prop-types */
 import React from 'react'
 import { getStoryblokApi, StoryblokStory } from '@storyblok/react/rsc'
+import { storyblokInit, apiPlugin } from '@storyblok/react/rsc'
+
+storyblokInit({
+  accessToken: process.env.STORYBLOK_API_TOKEN,
+  use: [apiPlugin],
+})
 
 export const generateStaticParams = async () => {
   const client = getStoryblokApi()

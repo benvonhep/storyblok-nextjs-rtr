@@ -1,5 +1,12 @@
 import React from 'react'
 import { getStoryblokApi, StoryblokStory } from '@storyblok/react/rsc'
+import { storyblokInit, apiPlugin } from '@storyblok/react/rsc'
+
+storyblokInit({
+  // eslint-disable-next-line no-undef
+  accessToken: process.env.STORYBLOK_API_TOKEN,
+  use: [apiPlugin],
+})
 
 const fetchHomePage = async () => {
   let sbParams = {
