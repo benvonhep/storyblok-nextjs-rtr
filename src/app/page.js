@@ -1,17 +1,21 @@
+/* eslint-disable no-undef */
 import React from 'react'
 import { getStoryblokApi, StoryblokStory } from '@storyblok/react/rsc'
 import { storyblokInit, apiPlugin } from '@storyblok/react/rsc'
+import { draftMode } from 'next/headers'
 
 storyblokInit({
-  // eslint-disable-next-line no-undef
   accessToken: process.env.NEXT_PUBLIC_STORYBLOK_API_TOKEN,
   use: [apiPlugin],
 })
 
 const fetchHomePage = async () => {
+  const { isEnabled } = draftMode()
   let sbParams = {
-    // eslint-disable-next-line no-undef
-    version: process.env.NODE_ENV === 'development' ? 'draft' : 'published',
+    version:
+      process.env.NODE_ENV === 'development' || isEnabled
+        ? 'draft'
+        : 'published',
     resolve_relations: 'recommended_tours.tours',
   }
 
