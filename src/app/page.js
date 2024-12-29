@@ -11,6 +11,7 @@ storyblokInit({
 
 const fetchHomePage = async () => {
   const { isEnabled } = draftMode()
+  console.log(isEnabled, 'isEnableduuuuuuuuuuuuuuu')
   let sbParams = {
     version:
       process.env.NODE_ENV === 'development' || isEnabled
@@ -35,7 +36,12 @@ const HomePage = async () => {
   const story = await fetchHomePage()
   // console.log(story, 'story')
 
-  return <StoryblokStory story={story} />
+  return (
+    <StoryblokStory
+      story={story}
+      bridgeOptions={{ resolveRelations: ['recommended_tours.tours'] }}
+    />
+  )
   // return <div>hello home page</div>
 }
 export default HomePage
